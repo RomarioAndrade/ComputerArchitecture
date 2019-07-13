@@ -1,3 +1,4 @@
+	;
 	JMP inicio
 VAR_A:
 	DB 10
@@ -6,18 +7,18 @@ VAR_B:
 	DB 35
 
 inicio:	
-	MOV B, [VAR_A]		;Coloca 10 em B e 35 em C
+	MOV B, [VAR_A]			;Coloca 10 em B e 35 em C
 	MOV C, [VAR_B]
 	CALL printf			;Chama rotina de impressão
 	
 	
-	MOV B, [VAR_A]		;Coloca 10 em B e 35 em C
+	MOV B, [VAR_A]			;Coloca 10 em B e 35 em C
 	MOV C, [VAR_B]
 	
 	PUSH B				;Coloca o valor de B na pilha
 	MOV B, C			;Move o valor de C para B
 	POP C				;Recupera o valor armazenado na pilha e
-						;coloca em C
+					;coloca em C
 	CALL printf			;Chama rotina de impressão
 	HLT
 
@@ -30,8 +31,8 @@ printf:
 	INC D
 	MOV A, B				;posiciona o valor a ser imprimido no registrador A
 
-	CALL printfDezenas		;chamada para imprimir as dezenas de A
-	CALL printfUnidades		;chamada para imprimir as unidade de A
+	CALL printfDezenas			;chamada para imprimir as dezenas de A
+	CALL printfUnidades			;chamada para imprimir as unidade de A
 
 	MOV [D], 66				;Imprime a letra B
 	INC D
@@ -47,7 +48,7 @@ printf:
 
 printfDezenas:
 	DIV 10					;A ÷ 10	
-	CALL printfA			;Imprime A
+	CALL printfA				;Imprime A
 	RET
 
 printfUnidades:
@@ -56,7 +57,7 @@ printfUnidades:
 	MUL 10					;A*10  Multiplica o valor de A por 10.
 	SUB B, A				;B = B - A Subtrair A do valor original.
 	MOV A, B				;Move B para A
-	CALL printfA			;Imprime A
+	CALL printfA				;Imprime A
 	RET
 
 printfA:
